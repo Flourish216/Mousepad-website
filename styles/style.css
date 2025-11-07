@@ -334,6 +334,18 @@ main {
   font-size: 0.85rem;
 }
 
+.category-list a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.category-list a:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
 .category-list li::before {
   content: '•';
   margin-right: 0.35rem;

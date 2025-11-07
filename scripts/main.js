@@ -12,7 +12,7 @@ const catalog = {
       indicator: 'Speed category',
       description: 'Low static, glassy glide for players who float until it is time to micro-correct.',
       heroProduct: 'raiden',
-      members: ['Raiden', 'K83', 'Hayate Otsu', 'Hien', 'Shidenkai V2']
+      members: ['raiden', 'k83', 'hayate-otsu', 'hien', 'shidenkai-v2']
     },
     {
       slug: 'balance',
@@ -20,7 +20,7 @@ const catalog = {
       indicator: 'Balance category',
       description: 'Steady glide with predictable stopping—perfect for hybrid sensitivities.',
       heroProduct: 'zero',
-      members: ['Zero', 'Saturn']
+      members: ['zero', 'saturn']
     },
     {
       slug: 'control',
@@ -28,7 +28,7 @@ const catalog = {
       indicator: 'Control category',
       description: 'Textured cloth and grounded bases that brake on command.',
       heroProduct: 'type99',
-      members: ['Type99']
+      members: ['type99']
     }
   ],
   products: {
@@ -284,7 +284,13 @@ function renderCategoryGrid() {
       <h3>${heroProduct?.name || ''}</h3>
       <p>${category.description}</p>
       <ul class="category-list">
-        ${category.members.map((member) => `<li>${member}</li>`).join('')}
+        ${category.members
+          .map((memberSlug) => {
+            const memberProduct = catalog.products[memberSlug];
+            if (!memberProduct) return '';
+            return `<li><a href="${basePath}products/${memberProduct.slug}.html">${memberProduct.name}</a></li>`;
+          })
+          .join('')}
       </ul>
       <a class="btn primary" href="${basePath}products/${heroProduct?.slug}.html">Open detail</a>
       <img src="${basePath}${heroProduct?.image || ''}" alt="${heroProduct?.name || ''} pad" loading="lazy" />
