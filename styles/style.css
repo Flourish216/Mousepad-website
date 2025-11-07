@@ -480,6 +480,36 @@ main {
   font-size: 1.05rem;
 }
 
+.faq {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.faq-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  background: var(--panel);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.faq-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.faq-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .contact-actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
