@@ -1,26 +1,74 @@
 const products = [
   {
-    name: 'EaseBuy Zero Clone',
-    description: 'Mid-slow control surface with micro-adjusted humidity seal for consistent glide.',
-    feel: 'Control / Microtexture',
-    price: 54,
-    image: 'assets/pad-1.svg',
+    name: 'EaseBuy Shidenkai V2',
+    description: 'Updated static-control glass weave with effortless glide and low stopping force.',
+    feel: 'Speed / Glass weave',
+    price: 30,
+    image: 'assets/shidenkai-v2.jpg',
     cta: 'https://discord.gg/easebuypads'
   },
   {
-    name: 'EaseBuy Raiden Clone',
-    description: 'Ultra-smooth hybrid cloth for flexible flicks without sacrificing stopping power.',
-    feel: 'Hybrid / Speed cloth',
-    price: 58,
-    image: 'assets/pad-2.svg',
+    name: 'EaseBuy K83',
+    description: 'Firm base control pad tuned for micro-adjustments and clutch tracking.',
+    feel: 'Control / Firm base',
+    price: 30,
+    image: 'assets/k83.jpg',
     cta: 'mailto:easebuypads@gmail.com'
   },
   {
-    name: 'EaseBuy Ember Edition',
-    description: 'Textured base layer and low-profile embossing keeps the pad planted on glass desks.',
+    name: 'EaseBuy Hayate Otsu',
+    description: 'Balanced weave with a lightly textured topsheet for predictable medium glide.',
     feel: 'Balanced / Textured',
-    price: 62,
-    image: 'assets/pad-3.svg',
+    price: 30,
+    image: 'assets/hayate-otsu.jpg',
+    cta: 'https://discord.gg/easebuypads'
+  },
+  {
+    name: 'EaseBuy Zero',
+    description: 'Classic control cloth reissued with modern edge stitching and humidity seal.',
+    feel: 'Control / Micro texture',
+    price: 30,
+    image: 'assets/zero.jpg',
+    cta: 'https://discord.gg/easebuypads'
+  },
+  {
+    name: 'EaseBuy Saturn OG',
+    description: 'Soft base comfort pad with tuned static friction for palm-heavy aimers.',
+    feel: 'Balanced / Soft foam',
+    price: 30,
+    image: 'assets/saturn-old.jpg',
+    cta: 'mailto:easebuypads@gmail.com'
+  },
+  {
+    name: 'EaseBuy Type 99',
+    description: 'Mid-speed hybrid surface offering fast glide with confident stopping.',
+    feel: 'Hybrid / Mid speed',
+    price: 30,
+    image: 'assets/type99.jpg',
+    cta: 'https://discord.gg/easebuypads'
+  },
+  {
+    name: 'EaseBuy Hien',
+    description: 'Iconic rough texture with crisp feedback and consistent kinetic control.',
+    feel: 'Textured / Control',
+    price: 30,
+    image: 'assets/hien.jpg',
+    cta: 'mailto:easebuypads@gmail.com'
+  },
+  {
+    name: 'EaseBuy Raiden',
+    description: 'Low static friction speed cloth that still brakes with deliberate pressure.',
+    feel: 'Speed / Low static',
+    price: 30,
+    image: 'assets/raiden.jpg',
+    cta: 'https://discord.gg/easebuypads'
+  },
+  {
+    name: 'EaseBuy Pom Dot Skates',
+    description: 'Pre-cut POM dots for custom tuning—pair with any pad for ultra-light glide.',
+    feel: 'POM / Low-friction',
+    price: 8,
+    image: 'assets/pom-dot-skates.jpg',
     cta: 'https://discord.gg/easebuypads'
   }
 ];
