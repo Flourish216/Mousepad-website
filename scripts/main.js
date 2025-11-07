@@ -5,7 +5,7 @@ const products = [
     feel: 'Speed / Glass weave',
     price: 30,
     image: 'assets/shidenkai-v2.jpg',
-    cta: 'https://discord.gg/easebuypads'
+    cta: 'https://discord.gg/pfEfK8AxvQ'
   },
   {
     name: 'EaseBuy K83',
@@ -21,7 +21,7 @@ const products = [
     feel: 'Balanced / Textured',
     price: 30,
     image: 'assets/hayate-otsu.jpg',
-    cta: 'https://discord.gg/easebuypads'
+    cta: 'https://discord.gg/pfEfK8AxvQ'
   },
   {
     name: 'EaseBuy Zero',
@@ -29,7 +29,7 @@ const products = [
     feel: 'Control / Micro texture',
     price: 30,
     image: 'assets/zero.jpg',
-    cta: 'https://discord.gg/easebuypads'
+    cta: 'https://discord.gg/pfEfK8AxvQ'
   },
   {
     name: 'EaseBuy Saturn OG',
@@ -45,7 +45,7 @@ const products = [
     feel: 'Hybrid / Mid speed',
     price: 30,
     image: 'assets/type99.jpg',
-    cta: 'https://discord.gg/easebuypads'
+    cta: 'https://discord.gg/pfEfK8AxvQ'
   },
   {
     name: 'EaseBuy Hien',
@@ -61,7 +61,7 @@ const products = [
     feel: 'Speed / Low static',
     price: 30,
     image: 'assets/raiden.jpg',
-    cta: 'https://discord.gg/easebuypads'
+    cta: 'https://discord.gg/pfEfK8AxvQ'
   },
   {
     name: 'EaseBuy Pom Dot Skates',
@@ -69,7 +69,7 @@ const products = [
     feel: 'POM / Low-friction',
     price: 8,
     image: 'assets/pom-dot-skates.jpg',
-    cta: 'https://discord.gg/easebuypads'
+    cta: 'https://discord.gg/pfEfK8AxvQ'
   }
 ];
 
