@@ -33,7 +33,7 @@ const catalog = {
   products: {
     raiden: {
       slug: 'raiden',
-      name: 'Elite5 Raiden',
+      name: 'Raiden',
       category: 'speed',
       summary: 'Low-static, glassy glide that breaks only when you dig in for the shot.',
       detail: {
@@ -57,7 +57,7 @@ const catalog = {
     },
     zero: {
       slug: 'zero',
-      name: 'Elite5 Zero',
+      name: 'Zero',
       category: 'balance',
       summary: 'Classic balance pad with micro-control and smooth glide.',
       detail: {
@@ -81,7 +81,7 @@ const catalog = {
     },
     type99: {
       slug: 'type99',
-      name: 'Elite5 Type99',
+      name: 'Type99',
       category: 'control',
       summary: 'Hybrid control pad that locks in with textured resistance.',
       detail: {
@@ -118,22 +118,28 @@ function setYear() {
   }
 }
 
-function highlightHero(productSlug) {
-  const heroImg = document.getElementById('hero-highlight');
-  const indicatorLabel = document.getElementById('hero-indicator-label');
-  const indicatorName = document.getElementById('hero-indicator-name');
-  const product = catalog.products[productSlug];
-  const category = product ? catalog.categories.find((cat) => cat.slug === product.category) : null;
-  if (product && heroImg) {
-    heroImg.src = product.image;
-    heroImg.alt = `${product.name} mousepad`;
-  }
-  if (category && indicatorLabel) {
-    indicatorLabel.textContent = category.indicator;
-  }
-  if (product && indicatorName) {
-    indicatorName.textContent = product.name;
-  }
+function renderHeroCarousel() {
+  const scroll = document.getElementById('hero-scroll');
+  if (!scroll) return;
+  const featured = ['raiden', 'zero', 'type99'];
+  scroll.innerHTML = '';
+  featured.forEach((slug) => {
+    const product = catalog.products[slug];
+    const category = catalog.categories.find((cat) => cat.slug === product.category);
+    if (!product) return;
+    const slide = document.createElement('article');
+    slide.className = 'hero-slide';
+    slide.innerHTML = `
+      <a href="${basePath}products/${product.slug}.html" class="hero-slide-link" aria-label="View ${product.name} details">
+        <img src="${basePath}${product.image}" alt="${product.name} pad" loading="lazy" />
+        <div class="category-indicator">
+          <span class="indicator-label">${category?.indicator || ''}</span>
+          <strong>${product.name}</strong>
+        </div>
+      </a>
+    `;
+    scroll.appendChild(slide);
+  });
 }
 
 function renderCategoryGrid() {
@@ -152,7 +158,7 @@ function renderCategoryGrid() {
         ${category.members.map((member) => `<li>${member}</li>`).join('')}
       </ul>
       <a class="btn primary" href="${basePath}products/${heroProduct?.slug}.html">Open detail</a>
-      <img src="${heroProduct?.image || ''}" alt="${heroProduct?.name || ''} pad" loading="lazy" />
+      <img src="${basePath}${heroProduct?.image || ''}" alt="${heroProduct?.name || ''} pad" loading="lazy" />
     `;
     grid.appendChild(card);
   });
@@ -287,7 +293,7 @@ function initReveal() {
 
 function initPage() {
   if (pageType === 'home') {
-    highlightHero('raiden');
+    renderHeroCarousel();
     renderCategoryGrid();
   } else if (pageType === 'product') {
     renderProductPage(body.dataset.product);
