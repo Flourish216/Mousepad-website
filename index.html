@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EaseBuy Pads | Balanced Performance, Zero Distraction</title>
+    <title>Elite5 Surfaces | Speed, Balance, Control</title>
     <meta
       name="description"
-      content="EaseBuy Pads delivers balanced custom mousepads with obsessively tuned surfaces for designers and competitive players."
+      content="Elite5 engineers boutique mousepads across speed, balance, and control archetypes. Explore precision surfaces and deep-dive into every pad."
     />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,88 +18,80 @@
     <link rel="stylesheet" href="styles/style.css" />
     <script defer src="scripts/main.js"></script>
   </head>
-  <body>
+  <body data-page="home" data-base="./">
     <header class="site-header reveal">
-      <a href="#hero" class="brand mark">
-        <img src="assets/logo.svg" alt="EaseBuy Pads logo" />
-        <span>EaseBuy Pads</span>
+      <a href="index.html" class="brand mark">
+        <img src="assets/elite5-logo.png" alt="Elite5 logo" />
+        <span>Elite5</span>
       </a>
       <nav class="site-nav">
-        <a href="#products">Products</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#categories">Categories</a>
+        <a href="categories/speed.html">Speed</a>
+        <a href="categories/balance.html">Balance</a>
+        <a href="categories/control.html">Control</a>
       </nav>
       <a class="discord-pill" href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">Join Discord</a>
     </header>
 
     <main>
-      <section id="hero" class="hero" aria-label="Brand introduction">
+      <section id="hero" class="hero" aria-label="Elite5 introduction">
         <div class="hero-content reveal">
-          <p class="eyebrow">Independent Surface Lab</p>
-          <h1>EaseBuy Pads</h1>
-          <p class="tagline">Balanced Performance, Zero Distraction.</p>
+          <p class="eyebrow">Elite5 Surface Lab</p>
+          <h1>Speed, Balance, Control.</h1>
+          <p class="tagline">Three archetypes. Infinite deskset dialects.</p>
           <p class="summary">
-            Custom-cut mousepads with restrained aesthetics and dialed-in microtextures. Designed for designers,
-            developers, and competitive players who prefer focus over flash.
+            Elite5 pads are engineered per category with tuned coatings, base densities, and finishing passes. Start with
+            your archetype, then deep-dive into each pad to study the weave, base, and edge treatments.
           </p>
           <div class="hero-ctas">
-            <a class="btn primary" href="#products">View Products</a>
-            <a class="btn ghost" href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">Join Discord</a>
+            <a class="btn primary" href="categories/speed.html">Explore Speed Pads</a>
+            <a class="btn ghost" href="mailto:contact@elite5pads.com">Talk with Elite5</a>
           </div>
         </div>
         <div class="hero-visual reveal" aria-hidden="true">
-          <div class="orb"></div>
-          <img src="assets/pad-1.svg" alt="EaseBuy pad rendering" />
+          <img id="hero-highlight" src="assets/raiden.jpg" alt="Elite5 Raiden speed pad" />
+          <div class="category-indicator" id="hero-indicator">
+            <span class="indicator-label" id="hero-indicator-label">Speed Category</span>
+            <strong id="hero-indicator-name">Raiden</strong>
+          </div>
         </div>
       </section>
 
-      <section id="products" class="products" aria-label="Product gallery">
+      <section id="categories" class="categories" aria-label="Elite5 pad categories">
         <div class="section-heading reveal">
-          <p class="eyebrow">Featured Lineup</p>
-          <h2>Tuned glide profiles, ready to ship</h2>
-          <p>Every pad is tested across humidity ranges and desk setups. Replace your desk mat, not your standards.</p>
+          <p class="eyebrow">Choose your archetype</p>
+          <h2>Category leaders that open each collection</h2>
+          <p>Raiden for speed, Zero for balance, Type99 for control. Click through for full families.</p>
         </div>
-        <div class="product-grid" id="product-grid" role="list"></div>
+        <div class="category-grid" id="category-grid" role="list"></div>
       </section>
 
-      <section id="about" class="about" aria-label="About EaseBuy Pads">
+      <section id="contact" class="contact" aria-label="Contact Elite5">
         <div class="section-heading reveal">
-          <p class="eyebrow">Why EaseBuy</p>
-          <h2>Minimal form. Maximum feel.</h2>
-        </div>
-        <p class="reveal">
-          EaseBuy Pads is an independent design studio focused on precise friction profiles. We partner directly with
-          OEMs to fine tune weave density, coating mixes, and edge finishes, resulting in pads that stay stealthy on any
-          desk. You get balanced glide, consistent tracking, and zero visual noise.
-        </p>
-      </section>
-
-      <section id="contact" class="contact" aria-label="Contact options">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Talk to us</p>
-          <h2>Order or collaborate</h2>
-          <p>Reach out for bulk orders, regional drops, or simple one-off replacements.</p>
+          <p class="eyebrow">channel</p>
+          <h2>Discord or direct mail</h2>
+          <p>Request private batches, OEM collaborations, or international shipping through our core channels.</p>
         </div>
         <div class="contact-actions">
           <a class="contact-card reveal" href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">
             <span class="label">Discord</span>
             <span class="value">discord.gg/pfEfK8AxvQ</span>
-            <span class="hint">Instant updates & community drops</span>
+            <span class="hint">Live inventory & technotes</span>
           </a>
-          <a class="contact-card reveal" href="mailto:easebuypads@gmail.com">
+          <a class="contact-card reveal" href="mailto:contact@elite5pads.com">
             <span class="label">Email</span>
-            <span class="value">easebuypads@gmail.com</span>
-            <span class="hint">Custom runs & support</span>
+            <span class="value">contact@elite5pads.com</span>
+            <span class="hint">Custom builds & wholesale</span>
           </a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer reveal">
-      <p>© <span id="year"></span> EaseBuy Pads. Crafted for intentional workspaces.</p>
+      <p>© <span id="year"></span> Elite5. Precision-crafted mousepads.</p>
       <div class="footer-links">
         <a href="#hero">Back to top</a>
-        <a href="mailto:easebuypads@gmail.com">Email</a>
+        <a href="mailto:contact@elite5pads.com">Email</a>
         <a href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">Discord</a>
       </div>
     </footer>
