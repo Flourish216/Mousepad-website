@@ -3,37 +3,93 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elite5 Surfaces | Speed, Balance, Control</title>
+    <title>Elite5 Surfaces | Premium Gaming Mousepads - Speed, Balance, Control</title>
     <meta
       name="description"
-      content="Elite5 engineers boutique mousepads across speed, balance, and control archetypes. Explore precision surfaces and deep-dive into every pad."
+      content="Elite5 engineers boutique gaming mousepads across speed, balance, and control archetypes. Premium surfaces engineered for esports performance. Starting at $30."
     />
+    <meta name="keywords" content="gaming mousepad, esports mousepad, speed pad, control pad, artisan mousepad, premium mousepad" />
+    <meta name="author" content="Elite5" />
+    <link rel="canonical" href="https://elite5pads.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://elite5pads.com/" />
+    <meta property="og:title" content="Elite5 Surfaces | Premium Gaming Mousepads" />
+    <meta property="og:description" content="Boutique mousepads engineered for speed, balance, and control. Premium surfaces for competitive gamers." />
+    <meta property="og:image" content="https://elite5pads.com/assets/elite5-logo-bg.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://elite5pads.com/" />
+    <meta property="twitter:title" content="Elite5 Surfaces | Premium Gaming Mousepads" />
+    <meta property="twitter:description" content="Boutique mousepads engineered for speed, balance, and control." />
+    <meta property="twitter:image" content="https://elite5pads.com/assets/elite5-logo-bg.jpg" />
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/elite5-logo.png" />
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Fonts with optimized loading -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles/style.css" />
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Elite5",
+      "url": "https://elite5pads.com",
+      "logo": "https://elite5pads.com/assets/elite5-logo.png",
+      "description": "Premium gaming mousepad manufacturer",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@elite5pads.com",
+        "contactType": "Customer Service"
+      },
+      "sameAs": [
+        "https://discord.gg/pfEfK8AxvQ"
+      ]
+    }
+    </script>
+    
+    <!-- Main Script -->
     <script defer src="scripts/main.js"></script>
   </head>
   <body data-page="home" data-base="./">
-    <header class="site-header reveal">
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="site-header reveal" role="banner">
       <a href="index.html" class="brand mark">
         <img src="assets/elite5-logo.png" alt="Elite5 logo" />
         <span>Elite5</span>
       </a>
-      <nav class="site-nav">
-        <a href="#lineup">Pads</a>
-        <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#categories" aria-label="View category recommendations">Recommendations</a>
+        <a href="#lineup" aria-label="Browse our mousepad lineup">Products</a>
+        <a href="#about" aria-label="Learn about Elite5">About</a>
+        <a href="#faq" aria-label="Frequently asked questions">FAQ</a>
+        <a href="#contact" aria-label="Contact us">Contact</a>
       </nav>
-      <a class="discord-pill" href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">Join Discord</a>
+      <a class="discord-pill" href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer" aria-label="Join our Discord server">
+        <svg width="20" height="20" viewBox="0 0 71 55" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+        </svg>
+      </a>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
       <section id="hero" class="hero" aria-label="Elite5 introduction">
         <div class="hero-content reveal">
           <p class="eyebrow">Elite5 Surface Lab</p>
@@ -44,12 +100,50 @@
             your archetype, then deep-dive into each pad to study the weave, base, and edge treatments.
           </p>
           <div class="hero-ctas">
-            <a class="btn primary" href="products/raiden.html">Explore Speed (Raiden)</a>
+            <button class="btn primary" id="explore-pads-btn">Pads</button>
+            <a class="btn ghost" href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">Join Discord</a>
             <a class="btn ghost" href="mailto:contact@elite5pads.com">Talk with Elite5</a>
           </div>
         </div>
         <div class="hero-visual reveal" aria-hidden="true">
           <div class="hero-scroll" id="hero-scroll" role="list"></div>
+        </div>
+      </section>
+
+      <!-- Trust Signals -->
+      <section class="trust-signals" aria-label="Why choose Elite5">
+        <div class="trust-grid reveal">
+          <div class="trust-item">
+            <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <h3>Premium Quality</h3>
+            <p>Engineered with OEM partners for consistent performance</p>
+          </div>
+          <div class="trust-item">
+            <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <h3>Global Shipping</h3>
+            <p>Worldwide delivery to 🇺🇸 🇨🇦 🇬🇧 and beyond</p>
+          </div>
+          <div class="trust-item">
+            <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <h3>Direct Support</h3>
+            <p>Fast response on Discord and email</p>
+          </div>
+          <div class="trust-item">
+            <svg class="trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <h3>No-Logo Design</h3>
+            <p>Minimal aesthetic for clean setups</p>
+          </div>
         </div>
       </section>
 
@@ -62,13 +156,54 @@
         <div class="category-grid" id="category-grid" role="list"></div>
       </section>
 
+      <!-- Elite5 Pad Matcher -->
+      <section id="pad-matcher" class="pad-matcher-section" aria-label="Find your Elite5 match">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Find your match</p>
+          <h2>Discover your Elite5 alternative</h2>
+          <p>Tell us your current pad and we'll recommend the closest Elite5 match.</p>
+        </div>
+        
+        <div class="matcher-tool reveal">
+          <div class="matcher-input">
+            <label for="current-pad">What mousepad are you using?</label>
+            <div class="input-wrapper">
+              <input 
+                type="text" 
+                id="current-pad" 
+                placeholder="e.g., G640, GSR, Zero"
+                autocomplete="off"
+              />
+              <div id="suggestions" class="suggestions-list" style="display: none;"></div>
+            </div>
+          </div>
+          
+          <div id="match-result" class="match-result" style="display: none;"></div>
+        </div>
+      </section>
+
       <section id="lineup" class="products" aria-label="Elite5 lineup">
         <div class="section-heading reveal">
           <p class="eyebrow">Complete lineup</p>
           <h2>Every pad, one tap away</h2>
           <p>Browse the full roster below—each pad now has its own detail sheet with specs and gallery.</p>
         </div>
+        
+        <!-- Category Filter Buttons -->
+        <div class="category-filter-buttons reveal">
+          <button class="filter-btn active" data-category="all">All Products</button>
+          <button class="filter-btn" data-category="speed">Speed</button>
+          <button class="filter-btn" data-category="balance">Balance</button>
+          <button class="filter-btn" data-category="control">Control</button>
+          <button class="filter-btn" data-category="accessories">Accessories</button>
+        </div>
+        
         <div class="product-grid" id="lineup-grid" role="list"></div>
+        
+        <!-- No Results Message -->
+        <div id="no-results" class="no-results" style="display: none;" role="status">
+          <p>No products found matching your filters. Try adjusting your search.</p>
+        </div>
       </section>
 
       <section id="about" class="about" aria-label="About Elite5">
@@ -88,36 +223,75 @@
           <p class="eyebrow">FAQ</p>
           <h2>Answers before you DM</h2>
         </div>
-        <div class="faq-grid">
-          <article class="faq-card reveal">
-            <h3>Q1: Are these pads made by you?</h3>
-            <p>
-              Yes! I designed and produced them myself, working directly with OEM manufacturers to fine-tune the surface
-              and base combinations.
-            </p>
-          </article>
-          <article class="faq-card reveal">
-            <h3>Q2: What makes your pads different?</h3>
-            <p>
-              I focus on clean, no-logo designs and balanced performance. The goal is a premium feel without loud
-              branding—perfect for minimal setups.
-            </p>
-          </article>
-          <article class="faq-card reveal">
-            <h3>Q3: Can you ship to my country?</h3>
-            <p>
-              Most likely yes! We ship from China to hubs in 🇺🇸 / 🇨🇦 / 🇬🇧 and handle other regions via air or railway. DM
-              me your location and I’ll check the exact cost.
-            </p>
-          </article>
-          <article class="faq-card reveal">
-            <h3>Q4: Sizing & price?</h3>
-            <p>The pads are 49×42 cm and the price is 30 USD each.</p>
-          </article>
-          <article class="faq-card reveal">
-            <h3>Q5: How do I order?</h3>
-            <p>Just DM me on Discord—I’ll reply as soon as possible.</p>
-          </article>
+        <div class="faq-accordion" role="list">
+          <details class="faq-item reveal" role="listitem">
+            <summary class="faq-question" role="button" aria-expanded="false">
+              <span>Q1: Are these pads made by you?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Yes! I designed and produced them myself, working directly with OEM manufacturers to fine-tune the surface
+                and base combinations.
+              </p>
+            </div>
+          </details>
+          
+          <details class="faq-item reveal" role="listitem">
+            <summary class="faq-question" role="button" aria-expanded="false">
+              <span>Q2: What makes your pads different?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                I focus on clean, no-logo designs and balanced performance. The goal is a premium feel without loud
+                branding—perfect for minimal setups.
+              </p>
+            </div>
+          </details>
+          
+          <details class="faq-item reveal" role="listitem">
+            <summary class="faq-question" role="button" aria-expanded="false">
+              <span>Q3: Can you ship to my country?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Most likely yes! We ship from China to hubs in 🇺🇸 / 🇨🇦 / 🇬🇧 and handle other regions via air or railway. DM
+                me your location and I'll check the exact cost.
+              </p>
+            </div>
+          </details>
+          
+          <details class="faq-item reveal" role="listitem">
+            <summary class="faq-question" role="button" aria-expanded="false">
+              <span>Q4: Sizing & price?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>The pads are 49×42 cm and the price is 30 USD each.</p>
+            </div>
+          </details>
+          
+          <details class="faq-item reveal" role="listitem">
+            <summary class="faq-question" role="button" aria-expanded="false">
+              <span>Q5: How do I order?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Just DM me on Discord—I'll reply as soon as possible.</p>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -142,10 +316,19 @@
       </section>
     </main>
 
-    <footer class="site-footer reveal">
-      <p>© <span id="year"></span> Elite5. Precision-crafted mousepads.</p>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top" title="Back to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </button>
+
+    <footer class="site-footer reveal" role="contentinfo">
+      <div class="footer-left">
+        <p>© <span id="year"></span> Elite5. Precision-crafted mousepads.</p>
+        <a href="https://github.com/rishikdulipyataGH" target="_blank" rel="noreferrer" class="footer-credit">site by rishikdulipyataGH</a>
+      </div>
       <div class="footer-links">
-        <a href="#hero">Back to top</a>
         <a href="mailto:contact@elite5pads.com">Email</a>
         <a href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">Discord</a>
       </div>

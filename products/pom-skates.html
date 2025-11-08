@@ -3,30 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Type99 | Elite5</title>
-    <meta name="description" content="Type99 control pad detail sheet." />
+    <title>POM Dot Skates | Elite5</title>
+    <meta name="description" content="Premium POM dot skates for ultra-smooth glide." />
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/style.css" />
     <script defer src="../scripts/main.js"></script>
   </head>
-  <body data-page="product" data-product="type99" data-base="../">
-    <header class="site-header">
+  <body data-page="product" data-product="pom-skates" data-base="../">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="site-header" role="banner">
       <a href="../index.html" class="brand mark">
         <img src="../assets/elite5-logo.png" alt="Elite5 logo" />
         <span>Elite5</span>
       </a>
-      <nav class="site-nav">
-        <a href="../index.html#categories">Recommendations</a>
-        <a href="../index.html#lineup">Products</a>
-        <a href="../index.html#about">About</a>
-        <a href="../index.html#faq">FAQ</a>
-        <a href="../index.html#contact">Contact</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../index.html#categories" aria-label="View category recommendations">Recommendations</a>
+        <a href="../index.html#lineup" aria-label="Browse our mousepad lineup">Products</a>
+        <a href="../index.html#about" aria-label="Learn about Elite5">About</a>
+        <a href="../index.html#faq" aria-label="Frequently asked questions">FAQ</a>
+        <a href="../index.html#contact" aria-label="Contact us">Contact</a>
       </nav>
       <a class="discord-pill" href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer" aria-label="Join our Discord server">
         <svg width="20" height="20" viewBox="0 0 71 55" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -35,16 +37,22 @@
       </a>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
       <section class="product-hero" id="product-hero"></section>
       <section class="product-details" aria-live="polite">
         <div id="product-summary" class="product-summary"></div>
         <div id="product-specs" class="product-specs"></div>
       </section>
-      <section class="product-gallery" id="product-gallery" aria-label="Pad gallery"></section>
+      <section class="product-gallery" id="product-gallery" aria-label="Product gallery"></section>
     </main>
 
-    <footer class="site-footer">
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top" title="Back to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </button>
+
+    <footer class="site-footer" role="contentinfo">
       <div class="footer-left">
         <p>© <span id="year"></span> Elite5. Precision-crafted mousepads.</p>
         <a href="https://github.com/rishikdulipyataGH" target="_blank" rel="noreferrer" class="footer-credit">site by rishikdulipyataGH</a>

@@ -4,7 +4,7 @@ const contacts = {
 };
 
 const catalog = {
-  lineup: ['raiden', 'k83', 'hayate-otsu', 'hien', 'shidenkai-v2', 'zero', 'saturn', 'type99'],
+  lineup: ['raiden', 'k83', 'hayate-otsu', 'hien', 'shidenkai-v2', 'zero', 'saturn', 'type99', 'pom-skates'],
   categories: [
     {
       slug: 'speed',
@@ -29,6 +29,14 @@ const catalog = {
       description: 'Textured cloth and grounded bases that brake on command.',
       heroProduct: 'type99',
       members: ['type99']
+    },
+    {
+      slug: 'accessories',
+      name: 'Accessories',
+      indicator: 'Accessories',
+      description: 'Premium mouse skates and accessories to complete your setup.',
+      heroProduct: 'pom-skates',
+      members: ['pom-skates']
     }
   ],
   products: {
@@ -231,6 +239,31 @@ const catalog = {
         { label: 'Base & edge', caption: 'Upload the base detail later.', src: 'assets/type99.jpg' }
       ],
       cta: contacts.discord
+    },
+    'pom-skates': {
+      slug: 'pom-skates',
+      name: 'POM Dot Skates',
+      category: 'accessories',
+      summary: 'Premium POM dot skates for ultra-smooth glide and minimal friction.',
+      detail: {
+        blurb: 'POM Dot Skates deliver consistent, low-friction glide across all pad surfaces. Engineered for durability and precision.',
+        surface: 'High-grade POM material provides smooth, consistent glide with minimal break-in period.',
+        base: 'Pre-applied adhesive backing for easy installation and secure attachment.',
+        edge: 'Precision-cut dots ensure even contact and balanced mouse movement.'
+      },
+      feel: 'Smooth / Low friction',
+      price: 8,
+      size: 'Universal fit',
+      thickness: '0.6 mm',
+      edgeFinish: 'Precision cut',
+      baseDensity: 'Adhesive backed',
+      hardness: 'POM material',
+      image: 'assets/pom-dot-skates.jpg',
+      gallery: [
+        { label: 'Product view', caption: 'Premium POM dot skates.', src: 'assets/pom-dot-skates.jpg' },
+        { label: 'Application', caption: 'Easy to apply with adhesive backing.', src: 'assets/pom-dot-skates.jpg' }
+      ],
+      cta: contacts.discord
     }
   }
 };
@@ -250,7 +283,8 @@ function setYear() {
 function renderHeroCarousel() {
   const scroll = document.getElementById('hero-scroll');
   if (!scroll) return;
-  const featured = ['raiden', 'zero', 'type99'];
+  // Show all category leaders
+  const featured = catalog.categories.map(cat => cat.heroProduct);
   scroll.innerHTML = '';
   featured.forEach((slug) => {
     const product = catalog.products[slug];
@@ -279,22 +313,48 @@ function renderCategoryGrid() {
     const heroProduct = catalog.products[category.heroProduct];
     const card = document.createElement('article');
     card.className = 'category-card reveal';
+    card.dataset.category = category.slug;
     card.innerHTML = `
       <div class="category-pill">${category.name}</div>
       <h3>${heroProduct?.name || ''}</h3>
       <p>${category.description}</p>
-      <ul class="category-list">
-        ${category.members
-          .map((memberSlug) => {
-            const memberProduct = catalog.products[memberSlug];
-            if (!memberProduct) return '';
-            return `<li><a href="${basePath}products/${memberProduct.slug}.html">${memberProduct.name}</a></li>`;
-          })
-          .join('')}
-      </ul>
-      <a class="btn primary" href="${basePath}products/${heroProduct?.slug}.html">Open detail</a>
       <img src="${basePath}${heroProduct?.image || ''}" alt="${heroProduct?.name || ''} pad" loading="lazy" />
     `;
+    
+    // Make entire card clickable to filter by category
+    card.addEventListener('click', () => {
+      // Filter products by category first
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const targetButton = document.querySelector(`.filter-btn[data-category="${category.slug}"]`);
+      
+      if (targetButton) {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to target button
+        targetButton.classList.add('active');
+        // Trigger filter
+        const lineupGrid = document.getElementById('lineup-grid');
+        const products = lineupGrid?.querySelectorAll('.product-card');
+        
+        products?.forEach(productCard => {
+          const productCategory = productCard.dataset.category || '';
+          if (productCategory === category.slug) {
+            productCard.style.display = '';
+          } else {
+            productCard.style.display = 'none';
+          }
+        });
+      }
+      
+      // Then scroll to filter buttons area
+      setTimeout(() => {
+        const filterButtons = document.querySelector('.category-filter-buttons');
+        if (filterButtons) {
+          filterButtons.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    });
+    
     grid.appendChild(card);
   });
 }
@@ -309,6 +369,7 @@ function renderLineupGrid() {
     if (!product) return;
     const card = document.createElement('article');
     card.className = 'product-card reveal';
+    card.dataset.category = product.category;
     card.innerHTML = `
       <img src="${basePath}${product.image}" alt="${product.name} pad" loading="lazy" />
       <div>
@@ -320,7 +381,7 @@ function renderLineupGrid() {
         <span>${product.feel}</span>
         <span class="price">${priceFormatter.format(product.price)}</span>
       </div>
-      <a class="buy-btn" href="${basePath}products/${product.slug}.html">View detail</a>
+      <a class="buy-btn" href="${basePath}products/${product.slug}.html">Details</a>
     `;
     grid.appendChild(card);
   });
@@ -339,9 +400,9 @@ function renderProductPage(slug) {
           <h1>${product.name}</h1>
           <p>${product.detail.blurb}</p>
           <div class="hero-ctas">
-            <span class="price">${priceFormatter.format(product.price)}</span>
-            <a class="btn primary" href="${product.cta}" target="_blank" rel="noreferrer">Buy / Contact</a>
-            <a class="btn ghost" href="${basePath}index.html#lineup">Back to lineup</a>
+            <span class="price product-page-price">${priceFormatter.format(product.price)}</span>
+            <a class="btn primary" href="${product.cta}" target="_blank" rel="noreferrer">Contact</a>
+            <a class="btn ghost btn-back" href="${basePath}index.html#lineup">Back</a>
           </div>
         </div>
         <div class="hero-media">
@@ -464,7 +525,270 @@ function initPage() {
   }
 }
 
+// Product filtering with category buttons
+function initProductFilters() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const lineupGrid = document.getElementById('lineup-grid');
+  const noResults = document.getElementById('no-results');
+
+  if (!filterButtons.length || !lineupGrid) return;
+
+  function filterProducts(category) {
+    const products = lineupGrid.querySelectorAll('.product-card');
+    let visibleCount = 0;
+
+    products.forEach((card) => {
+      const productCategory = card.dataset.category || '';
+      const matchesCategory = category === 'all' || productCategory === category;
+
+      if (matchesCategory) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Show/hide no results message
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach((btn) => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+      // Filter products
+      const category = button.dataset.category;
+      filterProducts(category);
+    });
+  });
+}
+
+// Back to top button
+function initBackToTop() {
+  const backToTopBtn = document.getElementById('back-to-top');
+  if (!backToTopBtn) return;
+
+  function toggleBackToTop() {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', toggleBackToTop);
+  toggleBackToTop(); // Check initial position
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
 setYear();
 initPage();
+
 initReveal();
 initSmoothScroll();
+initProductFilters();
+initBackToTop();
+
+// Handle Explore Pads button - same behavior as category leaders
+const explorePadsBtn = document.getElementById('explore-pads-btn');
+if (explorePadsBtn) {
+  explorePadsBtn.addEventListener('click', () => {
+    // Filter products to show all - same logic as category cards
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const targetButton = document.querySelector('.filter-btn[data-category="all"]');
+    
+    if (targetButton) {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to target button
+      targetButton.classList.add('active');
+      // Trigger filter
+      const lineupGrid = document.getElementById('lineup-grid');
+      const products = lineupGrid?.querySelectorAll('.product-card');
+      
+      products?.forEach(productCard => {
+        productCard.style.display = '';
+      });
+    }
+    
+    // Then scroll to filter buttons area - exact same code as category cards
+    setTimeout(() => {
+      const filterButtons = document.querySelector('.category-filter-buttons');
+      if (filterButtons) {
+        filterButtons.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  });
+}
+
+// Elite5 Pad Matcher
+let matcherData = [];
+
+// Elite5 pads mapping
+const elite5Pads = {
+  'raiden': { name: 'Raiden', slug: 'raiden', spectrum: 0, category: 'Super fast' },
+  'shidenkai': { name: 'Shidenkai V2', slug: 'shidenkai-v2', spectrum: 0, category: 'Super fast' },
+  'hayate-otsu': { name: 'Hayate Otsu', slug: 'hayate-otsu', spectrum: 20, category: 'Speed' },
+  'hien': { name: 'Hien', slug: 'hien', spectrum: 0, category: 'Super fast' },
+  'k83': { name: 'K83', slug: 'k83', spectrum: 0, category: 'Super fast' },
+  'zero': { name: 'Zero', slug: 'zero', spectrum: 40, category: 'Balance-speed' },
+  'saturn': { name: 'Saturn', slug: 'saturn', spectrum: 70, category: 'Balance-control' },
+  'type99': { name: 'Type99', slug: 'type99', spectrum: 100, category: 'Control' }
+};
+
+// Load matcher data
+async function loadMatcherData() {
+  try {
+    const response = await fetch(basePath + 'mousepad-spectrum.json');
+    const data = await response.json();
+    matcherData = data.data;
+    initPadMatcher();
+  } catch (error) {
+    console.error('Failed to load matcher data:', error);
+  }
+}
+
+// Initialize pad matcher
+function initPadMatcher() {
+  const input = document.getElementById('current-pad');
+  const suggestions = document.getElementById('suggestions');
+  const resultContainer = document.getElementById('match-result');
+  
+  if (!input || !suggestions || !resultContainer) {
+    console.error('Matcher elements not found');
+    return;
+  }
+  
+  // Live autocomplete
+  input.addEventListener('input', (e) => {
+    const query = e.target.value.trim();
+    const queryLower = query.toLowerCase();
+    
+    if (query.length < 2) {
+      suggestions.style.display = 'none';
+      return;
+    }
+    
+    // Find matches with fuzzy search
+    const matches = matcherData.filter(pad => {
+      const nameLower = pad.name.toLowerCase();
+      // Check if pad name contains the query or any word from the query
+      return nameLower.includes(queryLower) || 
+             queryLower.split(/\s+/).some(word => word.length > 1 && nameLower.includes(word));
+    }).slice(0, 4);
+    
+    if (matches.length > 0) {
+      suggestions.innerHTML = matches.map(pad => 
+        `<div class="suggestion-item" data-name="${pad.name}">${pad.name}</div>`
+      ).join('');
+      suggestions.style.display = 'block';
+      
+      // Click suggestion to fill input and find match
+      suggestions.querySelectorAll('.suggestion-item').forEach(item => {
+        item.addEventListener('click', () => {
+          input.value = item.dataset.name;
+          suggestions.style.display = 'none';
+          findMatchByName(item.dataset.name);
+        });
+      });
+    } else {
+      suggestions.style.display = 'none';
+    }
+  });
+  
+}
+
+// Find match by pad name
+function findMatchByName(padName) {
+  const resultContainer = document.getElementById('match-result');
+  if (!resultContainer) return;
+  
+  // Find user's pad in database
+  const userPad = matcherData.find(pad => 
+    pad.name.toLowerCase() === padName.toLowerCase()
+  );
+  
+  if (!userPad) {
+    resultContainer.innerHTML = `
+      <div class="no-match">
+        <p>Couldn't find "${padName}" in our database.</p>
+        <p>Try searching for similar pads or contact us for a recommendation.</p>
+      </div>
+    `;
+    resultContainer.style.display = 'block';
+    return;
+  }
+  
+  findMatchByPad(userPad);
+}
+
+// Find match by pad object
+function findMatchByPad(userPad) {
+  const resultContainer = document.getElementById('match-result');
+  if (!resultContainer) return;
+  
+  // Find closest Elite5 pad based on spectrum value
+  let closestPad = null;
+  let smallestDiff = Infinity;
+  
+  Object.values(elite5Pads).forEach(e5pad => {
+    const diff = Math.abs(e5pad.spectrum - userPad.spectrum);
+    if (diff < smallestDiff) {
+      smallestDiff = diff;
+      closestPad = e5pad;
+    }
+  });
+  
+  if (closestPad) {
+    resultContainer.innerHTML = `
+      <div class="match-found">
+        <div class="match-header">
+          <h3>Your Match</h3>
+          <span class="match-badge">Elite5 ${closestPad.name}</span>
+        </div>
+        <div class="match-details">
+          <div class="match-comparison">
+            <div class="pad-info">
+              <span class="pad-label">Your Pad</span>
+              <strong>${userPad.name}</strong>
+              <span class="pad-category">${userPad.category}</span>
+            </div>
+            <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            <div class="pad-info elite5-info">
+              <span class="pad-label">Elite5 Match</span>
+              <strong>${closestPad.name}</strong>
+              <span class="pad-category">${closestPad.category}</span>
+            </div>
+          </div>
+          <a href="${basePath}products/${closestPad.slug}.html" class="btn primary match-cta">
+            View ${closestPad.name} Details
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    `;
+    resultContainer.style.display = 'block';
+    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// Load matcher on home page
+if (pageType === 'home') {
+  loadMatcherData();
+}
