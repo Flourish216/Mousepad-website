@@ -700,7 +700,7 @@ function renderGalleryGrid() {
         <p class="product-summary">${product.summary}</p>
       </div>
       <div class="product-meta">
-        <span>${product.feel}</span>
+        <span>${product.modelCode}</span>
         <span class="price">${priceFormatter.format(product.price)}</span>
       </div>
     `;
@@ -1049,25 +1049,58 @@ if (explorePadsBtn) {
 
 // Elite5 Pad Matcher
 let matcherData = [];
+let elite5Pads = [];
 
-// Elite5 pads mapping
-const elite5Pads = {
-  'raiden': { name: 'Raiden', slug: 'raiden', spectrum: 0, category: 'Super fast' },
-  'shidenkai': { name: 'Shidenkai V2', slug: 'shidenkai-v2', spectrum: 0, category: 'Super fast' },
-  'hayate-otsu': { name: 'Hayate Otsu', slug: 'hayate-otsu', spectrum: 20, category: 'Speed' },
-  'hien': { name: 'Hien', slug: 'hien', spectrum: 0, category: 'Super fast' },
-  'k83': { name: 'K83', slug: 'k83', spectrum: 0, category: 'Super fast' },
-  'zero': { name: 'Zero', slug: 'zero', spectrum: 40, category: 'Balance-speed' },
-  'saturn': { name: 'Saturn', slug: 'saturn', spectrum: 70, category: 'Balance-control' },
-  'type99': { name: 'Type99', slug: 'type99', spectrum: 100, category: 'Control' }
-};
+// Generate slug from name
+function generateSlug(name) {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
+
+// Parse CSV data
+function parseCSV(text) {
+  const lines = text.trim().split(/\r?\n/);
+  const headers = lines[0].split(',').map(h => h.trim());
+  const data = [];
+  
+  for (let i = 1; i < lines.length; i++) {
+    if (!lines[i].trim()) continue; // Skip empty lines
+    const values = lines[i].split(',');
+    if (values.length < headers.length) continue; // Skip incomplete lines
+    
+    const obj = {};
+    headers.forEach((header, index) => {
+      const value = (values[index] || '').trim();
+      // Convert spectrum to number
+      obj[header] = header === 'spectrum' ? parseInt(value, 10) : value;
+    });
+    data.push(obj);
+  }
+  
+  return data;
+}
 
 // Load matcher data
 async function loadMatcherData() {
   try {
-    const response = await fetch(basePath + 'mousepad-spectrum.json');
-    const data = await response.json();
-    matcherData = data.data;
+    const response = await fetch(basePath + 'mousepad-spectrum.csv');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const text = await response.text();
+    matcherData = parseCSV(text);
+    
+    // Extract Elite5 pads dynamically from CSV
+    elite5Pads = matcherData
+      .filter(pad => pad.brand === 'elite5')
+      .map(pad => ({
+        name: pad.name,
+        slug: generateSlug(pad.name),
+        spectrum: pad.spectrum,
+        category: pad.category
+      }));
+    
+    console.log('Loaded matcher data:', matcherData.length, 'pads');
+    console.log('Elite5 pads:', elite5Pads.length);
     initPadMatcher();
   } catch (error) {
     console.error('Failed to load matcher data:', error);
@@ -1085,36 +1118,58 @@ function initPadMatcher() {
     return;
   }
   
+  let selectedBasePad = null;
+  
   // Live autocomplete
   input.addEventListener('input', (e) => {
     const query = e.target.value.trim();
     const queryLower = query.toLowerCase();
+    selectedBasePad = null;
     
     if (query.length < 2) {
       suggestions.style.display = 'none';
       return;
     }
     
-    // Find matches with fuzzy search
-    const matches = matcherData.filter(pad => {
+    // Find unique base names - only show non-Elite5 pads
+    const uniquePads = new Map();
+    matcherData.forEach(pad => {
+      if (pad.brand === 'elite5') return;
       const nameLower = pad.name.toLowerCase();
-      // Check if pad name contains the query or any word from the query
-      return nameLower.includes(queryLower) || 
-             queryLower.split(/\s+/).some(word => word.length > 1 && nameLower.includes(word));
-    }).slice(0, 4);
+      if (nameLower.includes(queryLower) || queryLower.split(/\s+/).some(word => word.length > 1 && nameLower.includes(word))) {
+        const key = `${pad.brand}-${pad.name}`;
+        if (!uniquePads.has(key)) {
+          uniquePads.set(key, pad);
+        }
+      }
+    });
+    
+    const matches = Array.from(uniquePads.values()).slice(0, 3);
     
     if (matches.length > 0) {
       suggestions.innerHTML = matches.map(pad => 
-        `<div class="suggestion-item" data-name="${pad.name}">${pad.name}</div>`
+        `<div class="suggestion-item" data-name="${pad.name}" data-brand="${pad.brand}">${pad.brand} ${pad.name}</div>`
       ).join('');
       suggestions.style.display = 'block';
       
-      // Click suggestion to fill input and find match
+      // Click suggestion to auto-select mid hardness
       suggestions.querySelectorAll('.suggestion-item').forEach(item => {
         item.addEventListener('click', () => {
-          input.value = item.dataset.name;
+          const padName = item.dataset.name;
+          const padBrand = item.dataset.brand;
+          input.value = `${padBrand} ${padName}`;
           suggestions.style.display = 'none';
-          findMatchByName(item.dataset.name);
+          
+          // Find variants and auto-select mid or first available
+          const variants = matcherData.filter(pad => 
+            pad.name === padName && pad.brand === padBrand
+          );
+          
+          let selectedPad = variants.find(v => v.hardness === 'mid') || variants[0];
+          
+          if (selectedPad) {
+            findMatchByPadWithHardnessOptions(selectedPad, variants);
+          }
         });
       });
     } else {
@@ -1122,6 +1177,78 @@ function initPadMatcher() {
     }
   });
   
+}
+
+// Find match by pad with hardness options in badge
+function findMatchByPadWithHardnessOptions(userPad, variants) {
+  const resultContainer = document.getElementById('match-result');
+  if (!resultContainer) return;
+  
+  // Find closest Elite5 pad based on spectrum value
+  let closestPad = null;
+  let smallestDiff = Infinity;
+  
+  elite5Pads.forEach(e5pad => {
+    const diff = Math.abs(e5pad.spectrum - userPad.spectrum);
+    if (diff < smallestDiff) {
+      smallestDiff = diff;
+      closestPad = e5pad;
+    }
+  });
+  
+  if (!closestPad) return;
+  
+  // Get unique hardness options
+  const hardnessOptions = [...new Set(variants.map(v => v.hardness))];
+  
+  resultContainer.innerHTML = `
+    <div class="match-found">
+      <div class="match-header">
+        <div class="hardness-selector">
+          ${hardnessOptions.map(h => `
+            <button class="hardness-option ${h === userPad.hardness ? 'active' : ''}" data-hardness="${h}" ${hardnessOptions.length === 1 ? 'disabled' : ''}>
+              ${h.toUpperCase()}
+            </button>
+          `).join('')}
+        </div>
+        <span class="match-badge">${userPad.brand}</span>
+      </div>
+      <div class="match-details">
+        <div class="match-comparison">
+          <div class="pad-info">
+            <span class="pad-label">Your Pad</span>
+            <strong>${userPad.brand} ${userPad.name}</strong>
+            <span class="pad-category">${userPad.category}</span>
+            <span class="pad-spectrum">Spectrum Value: ${userPad.spectrum}</span>
+          </div>
+          <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+          <div class="pad-info elite5-info" onclick="window.location.href='${basePath}products/${closestPad.slug}.html'" style="cursor: pointer;">
+            <span class="pad-label">Elite5 Match</span>
+            <strong>${closestPad.name}</strong>
+            <span class="pad-category">${closestPad.category}</span>
+            <span class="pad-spectrum">Spectrum Value: ${closestPad.spectrum}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  resultContainer.style.display = 'block';
+  resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  
+  // Add click handlers for hardness buttons
+  resultContainer.querySelectorAll('.hardness-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const newHardness = btn.dataset.hardness;
+      const newPad = variants.find(v => v.hardness === newHardness);
+      if (newPad) {
+        findMatchByPadWithHardnessOptions(newPad, variants);
+      }
+    });
+  });
 }
 
 // Find match by pad name
@@ -1157,7 +1284,7 @@ function findMatchByPad(userPad) {
   let closestPad = null;
   let smallestDiff = Infinity;
   
-  Object.values(elite5Pads).forEach(e5pad => {
+  elite5Pads.forEach(e5pad => {
     const diff = Math.abs(e5pad.spectrum - userPad.spectrum);
     if (diff < smallestDiff) {
       smallestDiff = diff;
@@ -1178,6 +1305,7 @@ function findMatchByPad(userPad) {
               <span class="pad-label">Your Pad</span>
               <strong>${userPad.name}</strong>
               <span class="pad-category">${userPad.category}</span>
+              <span class="pad-spectrum">Spectrum Value: ${userPad.spectrum}</span>
             </div>
             <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="5" y1="12" x2="19" y2="12"/>
@@ -1187,6 +1315,7 @@ function findMatchByPad(userPad) {
               <span class="pad-label">Elite5 Match</span>
               <strong>${closestPad.name}</strong>
               <span class="pad-category">${closestPad.category}</span>
+              <span class="pad-spectrum">Spectrum Value: ${closestPad.spectrum}</span>
             </div>
           </div>
           <a href="${basePath}products/${closestPad.slug}.html" class="btn primary match-cta">

@@ -107,10 +107,6 @@
 }
 
 .canvas-legend {
-  position: absolute;
-  top: 0.25rem;
-  left: 50%;
-  transform: translateX(-50%);
   background: rgba(5, 5, 5, 0.95);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-hover);
@@ -119,12 +115,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 1.5rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.5rem;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .legend-header {
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 700;
@@ -138,7 +139,7 @@
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   color: var(--text-secondary);
 }
 
@@ -168,7 +169,7 @@
 }
 
 .legend-note {
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   color: var(--muted);
   line-height: 1;
   white-space: nowrap;
@@ -508,19 +509,26 @@
   
   .spectrum-stats {
     gap: 2rem;
+    grid-template-columns: 1fr;
   }
   
   .stat-number {
     font-size: 3rem;
   }
   
+  .spectrum-canvas-container {
+    padding: 1.5rem;
+    min-height: 500px;
+  }
+  
   #spectrum-canvas {
-    height: 400px;
+    height: 500px;
   }
   
   .canvas-legend {
-    position: static;
-    margin-top: 2rem;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
   }
   
   .pad-detail-card {
@@ -535,6 +543,7 @@
   
   .vs-divider {
     text-align: center;
+    padding: 0.5rem 0;
   }
   
   .comparison-tool {
@@ -551,27 +560,108 @@
   }
   
   .journey-timeline {
-    padding: 8rem 0.5rem;
+    padding: 4rem 0.5rem;
   }
   
   .timeline-marker {
     position: relative;
     transform: none;
     left: 0 !important;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .marker-dot {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--bg);
+    flex-shrink: 0;
+    top: 0;
+  }
+  
+  .marker-label {
+    text-align: left;
+    min-width: 0;
+    flex: 1;
+  }
+  
+  .marker-label strong {
+    font-size: 0.9375rem;
+  }
+  
+  .marker-label span {
+    font-size: 0.6875rem;
   }
   
   .timeline-rail {
     display: none;
   }
   
-  .marker-desc {
-    position: static;
-    white-space: normal;
-    margin-top: 0.5rem;
+  .rail-labels {
+    display: none;
   }
   
   .position-grid {
     grid-template-columns: 1fr;
   }
+  
+  .speed-journey {
+    padding: clamp(3rem, 6vh, 5rem) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .spectrum-canvas-container {
+    padding: 1rem;
+    min-height: 400px;
+  }
+  
+  #spectrum-canvas {
+    height: 400px;
+  }
+  
+  .canvas-legend {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .journey-timeline {
+    padding: 3rem 0.5rem;
+  }
+  
+  .timeline-marker {
+    margin-bottom: 2rem;
+    gap: 0.75rem;
+  }
+  
+  .marker-dot {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .marker-label strong {
+    font-size: 0.875rem;
+  }
+  
+  .marker-label span {
+    font-size: 0.625rem;
+  }
+}
+
+/* Comparison card header */
+.compare-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
 }

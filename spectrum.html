@@ -55,7 +55,7 @@
           </div>
           <div class="stat-item">
             <span class="stat-number" data-target="9">0</span>
-            <span class="stat-label">Elite5 Products</span>
+            <span class="stat-label">Elite5 Pads</span>
           </div>
           <div class="stat-item">
             <span class="stat-number" data-target="3">0</span>
@@ -155,36 +155,37 @@
           <p>Elite5 pads highlighted in white.</p>
         </div>
 
+        <div class="canvas-legend reveal">
+          <div class="legend-header">Legend</div>
+          <div class="legend-item">
+            <div class="legend-dot elite5-dot"></div>
+            <span>Elite5 Pads</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot market-dot"></div>
+            <span>Market Pads</span>
+          </div>
+          <div class="legend-divider"></div>
+          <div class="legend-note">Hover on pad for details</div>
+        </div>
+
         <div class="spectrum-canvas-container reveal">
           <canvas id="spectrum-canvas"></canvas>
-          <div class="canvas-legend">
-            <div class="legend-header">Legend</div>
-            <div class="legend-item">
-              <div class="legend-dot elite5-dot"></div>
-              <span>Elite5 Pads</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot market-dot"></div>
-              <span>Market Pads</span>
-            </div>
-            <div class="legend-divider"></div>
-            <div class="legend-note">Hover on pad for details</div>
-          </div>
         </div>
       </section>
 
       <!-- Comparison Tool -->
       <section class="spectrum-comparison">
         <div class="section-heading reveal">
-          <p class="eyebrow">Direct Comparison</p>
+          <p class="eyebrow">Comparison</p>
           <h2>Compare any two pads.</h2>
-          <p>Search for mousepads to see side-by-side comparison.</p>
+          <p>Search for mousepads to see side-by-side comparison and view them highlighted on the spectrum map above.</p>
         </div>
 
         <div class="comparison-tool reveal">
           <div class="comparison-inputs">
             <div class="input-group">
-              <label for="compare-pad-1">First Pad</label>
+              <label for="compare-pad-1">Pad 1</label>
               <div class="input-wrapper">
                 <input 
                   type="text" 
@@ -200,7 +201,7 @@
             <div class="vs-divider">VS</div>
 
             <div class="input-group">
-              <label for="compare-pad-2">Second Pad</label>
+              <label for="compare-pad-2">Pad 2</label>
               <div class="input-wrapper">
                 <input 
                   type="text" 
@@ -221,12 +222,20 @@
       </section>
     </main>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top" title="Back to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </button>
+
     <footer class="site-footer reveal">
       <div class="footer-left">
         <p>© <span id="year"></span> Elite5. Precision-crafted mousepads.</p>
         <a href="https://github.com/rishikdulipyataGH" target="_blank" rel="noreferrer" class="footer-credit">site by rishikdulipyataGH</a>
       </div>
       <div class="footer-links">
+        <a href="index.html">Home</a>
         <a href="mailto:contact@elite5pads.com">Email</a>
         <a href="https://discord.gg/pfEfK8AxvQ" target="_blank" rel="noreferrer">Discord</a>
       </div>
