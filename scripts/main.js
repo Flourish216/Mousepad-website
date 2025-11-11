@@ -4,29 +4,29 @@ const contacts = {
 };
 
 const catalog = {
-  lineup: ['raiden', 'k83', 'hayate-otsu', 'hien', 'shidenkai-v2', 'zero', 'saturn', 'type99', 'pom-skates'],
+  lineup: ['raiden', 'key83', 'hayate-otsu', 'hien', 'shidenkai-v2', 'zero', 'saturn', 'type99', 'pom-skates'],
   categories: [
     {
       slug: 'speed',
-      name: 'Speed Pads',
-      indicator: 'Speed category',
-      description: 'Low static, glassy glide for players who float until it is time to micro-correct.',
+      name: 'Speed',
+      indicator: 'Speed',
+      description: 'Low friction surfaces for fast glide and quick movements.',
       heroProduct: 'raiden',
-      members: ['raiden', 'k83', 'hayate-otsu', 'hien', 'shidenkai-v2']
+      members: ['raiden', 'key83', 'hayate-otsu', 'hien', 'shidenkai-v2']
     },
     {
       slug: 'balance',
-      name: 'Balance Pads',
-      indicator: 'Balance category',
-      description: 'Steady glide with predictable stopping—perfect for hybrid sensitivities.',
+      name: 'Balance',
+      indicator: 'Balance',
+      description: 'Smooth glide with good stopping power for all playstyles.',
       heroProduct: 'zero',
       members: ['zero', 'saturn']
     },
     {
       slug: 'control',
-      name: 'Control Pads',
-      indicator: 'Control category',
-      description: 'Textured cloth and grounded bases that brake on command.',
+      name: 'Control',
+      indicator: 'Control',
+      description: 'High friction for maximum control and precise stopping.',
       heroProduct: 'type99',
       members: ['type99']
     },
@@ -34,7 +34,7 @@ const catalog = {
       slug: 'accessories',
       name: 'Accessories',
       indicator: 'Accessories',
-      description: 'Premium mouse skates and accessories to complete your setup.',
+      description: 'Low-friction skates and accessories for your mouse.',
       heroProduct: 'pom-skates',
       members: ['pom-skates']
     }
@@ -43,225 +43,484 @@ const catalog = {
     raiden: {
       slug: 'raiden',
       name: 'Raiden',
+      modelCode: 'E5-RD',
       category: 'speed',
-      summary: 'Low-static, glassy glide that breaks only when you dig in for the shot.',
-      detail: {
-        blurb: 'Raiden leads the speed lab with a PU-coated weave that ignores humidity spikes and stays silent.',
-        surface: 'Ultra-tight speed weave carries a hydrophobic coat for minimal static friction.',
-        base: 'Mid-density foam snaps back flat, even on glass desks.',
-        edge: 'Stealth stitched edges melt into the surface with zero fray risk.'
+      tagline: 'Ultra-fast cloth with silky glide.',
+      summary: 'Densely woven polyester for extreme speed and low friction.',
+      
+      // Detailed specifications
+      surface: {
+        type: 'Silky smooth, minimal texture',
+        material: 'Densely woven tricot knit polyester with thin threads',
+        description: 'Ultra-smooth surface with virtually no texture. The tight weave creates a gliding sensation similar to silk while maintaining enough structure for precise control when pressure is applied.'
       },
-      feel: 'Speed / Low static',
+      
+      performance: {
+        speedRating: 'Extremely Fast',
+        speedDescription: 'Fastest cloth option',
+        friction: {
+          static: 'Extremely low',
+          dynamic: 'Very low',
+          stopping: 'Low to moderate'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'XSOFT', thickness: '4mm', firmness: 'Very Soft', description: 'Micro-adjustments, maximum stopping power, comfortable' },
+        { name: 'SOFT', thickness: '4mm', firmness: 'Moderately Soft', description: 'Most versatile, recommended for most players' },
+        { name: 'MID', thickness: '3mm', firmness: 'Firm', description: 'Tracking-heavy gameplay, consistent glide' }
+      ],
+      
+      bestFor: [
+        'High-speed FPS gameplay',
+        'Tracking-heavy games',
+        'Speed-focused players'
+      ],
+      
+      specs: {
+        size: '490 × 420 mm',
+        weight: '~180g',
+        material: '100% Polyester',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (below surface on SOFT/XSOFT, slightly raised on MID)'
+      },
+      
       price: 30,
-      size: '490 × 420 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Stealth stitched',
-      baseDensity: 'Mid-density foam',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/raiden.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Upload the top-coat macro when ready.', src: 'assets/raiden.jpg' },
-        { label: 'Base & edge', caption: 'Swap for the base photo later.', src: 'assets/raiden.jpg' }
+        { label: 'View 1', src: 'assets/raiden.jpg' },
+        { label: 'View 2', src: 'assets/raiden.jpg' },
+        { label: 'View 3', src: 'assets/raiden.jpg' }
       ],
       cta: contacts.discord
     },
-    k83: {
-      slug: 'k83',
-      name: 'K83',
+    key83: {
+      slug: 'key83',
+      name: 'Key83',
+      modelCode: 'E5-K83',
       category: 'speed',
-      summary: 'Firm-base speed pad with add-on control when you plant the mouse feet.',
-      detail: {
-        blurb: 'K83 keeps a rapid initial glide but adds stopping torque from its denser base stack.',
-        surface: 'Finely woven cloth rides on a friction-balanced coating for confident micro-adjustments.',
-        base: 'High-density foam keeps the pad level and resists compression under palm weight.',
-        edge: 'Laser-straight stitched edges resist lift.'
+      tagline: 'Speed with control.',
+      summary: 'Hexagonal weave for uniform glide and stopping power.',
+      
+      surface: {
+        type: 'Lightly textured with hexagonal pattern',
+        material: 'Unique hexagonal weave with conductive threads',
+        description: 'Distinctive hexagonal pattern visible on the surface. The conductive threads reduce static buildup while the geometric weave provides uniform glide in all directions with consistent stopping power.'
       },
-      feel: 'Speed / Firm base',
+      
+      performance: {
+        speedRating: 'Balanced Speed',
+        speedDescription: 'Speed-oriented with control',
+        friction: {
+          static: 'Medium',
+          dynamic: 'Medium',
+          stopping: 'Good'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'XSOFT', thickness: '4mm', firmness: 'Very Soft', description: 'Micro-adjustments, maximum stopping power, comfortable' },
+        { name: 'SOFT', thickness: '4mm', firmness: 'Moderately Soft', description: 'Most versatile, recommended for most players' },
+        { name: 'MID', thickness: '3mm', firmness: 'Firm', description: 'Tracking-heavy gameplay, consistent glide' }
+      ],
+      
+      bestFor: [
+        'Balanced gameplay',
+        'Tactical shooters',
+        'Low humidity environments'
+      ],
+      
+      specs: {
+        size: '490 × 420 mm',
+        weight: '~185g',
+        material: '100% Polyester',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (below surface on SOFT/XSOFT, slightly raised on MID)'
+      },
+      
       price: 30,
-      size: '490 × 420 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Precision stitch',
-      baseDensity: 'High-density foam',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/k83.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Swap with the cloth macro later.', src: 'assets/k83.jpg' },
-        { label: 'Base & edge', caption: 'Add the foam/bottom capture here.', src: 'assets/k83.jpg' }
+        { label: 'View 1', src: 'assets/k83.jpg' },
+        { label: 'View 2', src: 'assets/k83.jpg' },
+        { label: 'View 3', src: 'assets/k83.jpg' }
       ],
       cta: contacts.discord
     },
     'hayate-otsu': {
       slug: 'hayate-otsu',
       name: 'Hayate Otsu',
+      modelCode: 'E5-HO',
       category: 'speed',
-      summary: 'Balanced weave with lightly textured glide for medium-speed control.',
-      detail: {
-        blurb: 'Hayate Otsu is the most adaptable member of the speed set, perfect for mid-sens conversions.',
-        surface: 'Textured nylon mix keeps a touch of feedback while staying fast.',
-        base: 'Stabilized foam prevents uneven slow-downs across the pad.',
-        edge: 'Micro stitch follows the pad silhouette for long-term durability.'
+      tagline: 'Balanced speed and control.',
+      summary: 'Fine grainy texture with conductive threads for balanced performance.',
+      
+      surface: {
+        type: 'Fine grainy texture, smooth yet controlled',
+        material: 'Balanced weave with V2 conductive threads',
+        description: 'Subtle grainy surface that feels smooth but not slick. The conductive V2 threads eliminate static in dry conditions. Provides tactile feedback without being rough, making it easy to control while maintaining good glide speed.'
       },
-      feel: 'Balanced speed',
+      
+      performance: {
+        speedRating: 'Balanced Speed',
+        speedDescription: 'Medium-fast with control',
+        friction: {
+          static: 'Medium-low',
+          dynamic: 'Medium',
+          stopping: 'Good'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'XSOFT', thickness: '4mm', firmness: 'Very Soft', description: 'Micro-adjustments, maximum stopping power, comfortable' },
+        { name: 'SOFT', thickness: '4mm', firmness: 'Moderately Soft', description: 'Most versatile, recommended for most players' },
+        { name: 'MID', thickness: '3mm', firmness: 'Firm', description: 'Tracking-heavy gameplay, consistent glide' }
+      ],
+      
+      bestFor: [
+        'All-around versatile gameplay',
+        'Speed and control balance',
+        'FPS games'
+      ],
+      
+      specs: {
+        size: '490 × 420 mm',
+        weight: '~190g',
+        material: '100% Polyester',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (below surface on SOFT/XSOFT, slightly raised on MID)'
+      },
+      
       price: 30,
-      size: '490 × 420 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Micro stitched',
-      baseDensity: 'Stabilized foam',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/hayate-otsu.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Replace with the weave macro.', src: 'assets/hayate-otsu.jpg' },
-        { label: 'Base & edge', caption: 'Upload the backing shot.', src: 'assets/hayate-otsu.jpg' }
+        { label: 'View 1', src: 'assets/hayate-otsu.jpg' },
+        { label: 'View 2', src: 'assets/hayate-otsu.jpg' },
+        { label: 'View 3', src: 'assets/hayate-otsu.jpg' }
       ],
       cta: contacts.discord
     },
     hien: {
       slug: 'hien',
       name: 'Hien',
+      modelCode: 'E5-HI',
       category: 'speed',
-      summary: 'Iconic rough texture for tactile feedback and precise braking.',
-      detail: {
-        blurb: 'Hien keeps the speed lineup honest with aggressive texture that still glides when you stay light.',
-        surface: 'Coarse weave texture grips when feet dig in, keeping kinetic control.',
-        base: 'Resilient foam resists warping and anchors the pad.',
-        edge: 'Raised stitch treatment prevents unraveling without rubbing the wrist.'
+      tagline: 'Textured speed with tactile control.',
+      summary: 'Rough textured surface for fast glide with excellent stopping power.',
+      warning: 'Rough texture may be abrasive on skin',
+      
+      surface: {
+        type: 'Very rough, highly textured',
+        material: 'Pear skin-like nashi-ji weave (Japanese textile method)',
+        description: 'Aggressive textured surface resembling pear skin. The raised weave pattern provides strong tactile feedback and friction. Excellent for precise micro-adjustments but may feel abrasive on bare skin during extended use.'
       },
-      feel: 'Textured speed',
+      
+      performance: {
+        speedRating: 'Textured Speed',
+        speedDescription: 'Fast with tactile control',
+        friction: {
+          static: 'Low',
+          dynamic: 'Medium-high',
+          stopping: 'Excellent'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'XSOFT', thickness: '4mm', firmness: 'Very Soft', description: 'Micro-adjustments, maximum stopping power, comfortable' },
+        { name: 'SOFT', thickness: '4mm', firmness: 'Moderately Soft', description: 'Most versatile, recommended for most players' },
+        { name: 'MID', thickness: '3mm', firmness: 'Firm', description: 'Tracking-heavy gameplay, consistent glide' }
+      ],
+      
+      bestFor: [
+        'Tracking-heavy FPS games',
+        'Maximum texture feedback',
+        'Precision aiming'
+      ],
+      
+      specs: {
+        size: '490 × 420 mm',
+        weight: '~185g',
+        material: '100% Polyester',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (below surface on SOFT/XSOFT, slightly raised on MID)'
+      },
+      
       price: 30,
-      size: '490 × 420 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Raised stitch',
-      baseDensity: 'Resilient foam',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/hien.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Upload the macro to highlight texture.', src: 'assets/hien.jpg' },
-        { label: 'Base & edge', caption: 'Add the underside photo soon.', src: 'assets/hien.jpg' }
+        { label: 'View 1', src: 'assets/hien.jpg' },
+        { label: 'View 2', src: 'assets/hien.jpg' },
+        { label: 'View 3', src: 'assets/hien.jpg' }
       ],
       cta: contacts.discord
     },
     'shidenkai-v2': {
       slug: 'shidenkai-v2',
-      name: 'Shidenkai V2',
+      name: 'Shidenkai',
+      modelCode: 'E5-SK',
       category: 'speed',
-      summary: 'Glass-weave hybrid with almost hover-like glide.',
-      detail: {
-        blurb: 'Shidenkai V2 translates glass-bead smoothness into a cloth format for next-level flicks.',
-        surface: 'Glass-infused fibers stay slick yet consistent across humidity ranges.',
-        base: 'Reinforced rubberized base keeps the pad planted.',
-        edge: 'Coated edge wrap protects the fragile weave.'
+      tagline: 'Glass-coated hybrid speed.',
+      summary: 'Micro glass beads on cloth for ultra-low friction.',
+      durability: '3-6 months lifespan (coating wears over time)',
+      warning: 'NOT for glass skates, wears faster with POM skates',
+      
+      surface: {
+        type: 'Lightly textured glass surface',
+        material: 'Cloth base with thousands of micro glass beads',
+        description: 'Hybrid surface combining cloth comfort with glass-like speed. Thousands of tiny glass beads are fused to the cloth creating an extremely low-friction surface. Coating gradually wears over 3-6 months of use.'
       },
-      feel: 'Glass hybrid speed',
+      
+      performance: {
+        speedRating: 'Glass Hybrid Speed',
+        speedDescription: 'Fastest Artisan offering',
+        friction: {
+          static: 'Extremely low',
+          dynamic: 'Very low',
+          stopping: 'Low to moderate'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'MID', thickness: '3.31mm', firmness: 'Firm', description: 'Recommended for best compatibility', recommended: true }
+      ],
+      
+      bestFor: [
+        'Maximum speed gameplay',
+        'Hard pad feel with cloth comfort',
+        'Competitive play'
+      ],
+      
+      specs: {
+        size: '500 × 420 mm',
+        weight: '~200g',
+        material: 'Glass-infused cloth',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (slightly raised on MID)'
+      },
+      
       price: 30,
-      size: '500 × 420 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Edge wrap',
-      baseDensity: 'Reinforced rubber',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/shidenkai-v2.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Replace with crystal weave macro.', src: 'assets/shidenkai-v2.jpg' },
-        { label: 'Base & edge', caption: 'Add glass layer base shot.', src: 'assets/shidenkai-v2.jpg' }
+        { label: 'View 1', src: 'assets/shidenkai-v2.jpg' },
+        { label: 'View 2', src: 'assets/shidenkai-v2.jpg' },
+        { label: 'View 3', src: 'assets/shidenkai-v2.jpg' }
       ],
       cta: contacts.discord
     },
     zero: {
       slug: 'zero',
       name: 'Zero',
+      modelCode: 'E5-ZR',
       category: 'balance',
-      summary: 'Classic balance pad with micro-control and smooth glide.',
-      detail: {
-        blurb: 'Zero anchors the balance category with even glide and predictable stopping at any humidity.',
-        surface: 'Slightly textured cloth keeps static friction manageable while providing feedback.',
-        base: 'Soft-mid foam adds comfort for long sessions.',
-        edge: 'Rounded stitch ensures no abrasion during palm drifts.'
+      tagline: 'Versatile balanced control.',
+      summary: 'Twisted yarn weave for smooth glide with excellent control.',
+      
+      surface: {
+        type: 'Fine woven surface with subtle grain',
+        material: 'Twisted polyester yarn weave with micro-texture',
+        description: 'Tight woven surface with twisted yarn creating subtle raised texture. Feels crisp and responsive with clear directional feedback. The micro-texture provides consistent stopping power while maintaining smooth initial glide.'
       },
-      feel: 'Balance / Micro texture',
+      
+      performance: {
+        speedRating: 'Balanced',
+        speedDescription: 'Medium speed with control',
+        friction: {
+          static: 'Low',
+          dynamic: 'Medium',
+          stopping: 'Excellent'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'XSOFT', thickness: '4mm', firmness: 'Very Soft', description: 'Micro-adjustments, maximum stopping power, comfortable' },
+        { name: 'SOFT', thickness: '4mm', firmness: 'Moderately Soft', description: 'Most versatile, recommended for most players' },
+        { name: 'MID', thickness: '3mm', firmness: 'Firm', description: 'Tracking-heavy gameplay, consistent glide' }
+      ],
+      
+      bestFor: [
+        'All-around versatile gaming',
+        'Players new to Artisan',
+        'Professional competitive gaming'
+      ],
+      
+      specs: {
+        size: '490 × 420 mm',
+        weight: '~190g',
+        material: '100% Polyester',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (below surface on SOFT/XSOFT, slightly raised on MID)'
+      },
+      
       price: 30,
-      size: '490 × 420 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Rounded stitch',
-      baseDensity: 'Soft-mid foam',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/zero.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Replace with the balanced weave macro.', src: 'assets/zero.jpg' },
-        { label: 'Base & edge', caption: 'Upload the underside capture soon.', src: 'assets/zero.jpg' }
+        { label: 'View 1', src: 'assets/zero.jpg' },
+        { label: 'View 2', src: 'assets/zero.jpg' },
+        { label: 'View 3', src: 'assets/zero.jpg' }
       ],
       cta: contacts.discord
     },
     saturn: {
       slug: 'saturn',
       name: 'Saturn',
+      modelCode: 'E5-ST',
+      brand: 'Lethal Gaming Gear (LGG)',
       category: 'balance',
-      summary: 'Soft foam balance pad with muted branding and grounded glide.',
-      detail: {
-        blurb: 'Saturn leans slightly calmer than Zero, prioritizing stability for palm-heavy aimers.',
-        surface: 'Balanced weave keeps glide neutral with mild feedback.',
-        base: 'Soft foam dampens desk vibration and conforms to uneven tables.',
-        edge: 'Low-profile stitch to avoid wrist rub.'
+      tagline: 'Soft balanced control.',
+      summary: 'Smooth textured surface with soft Poron foam for comfort.',
+      
+      surface: {
+        type: 'Mostly smooth with light texture',
+        material: '100% polyester fabric with subtle texture',
+        description: 'Predominantly smooth surface with light texture elements. Softer foam base compared to similar pads provides more cushion and comfort. The polyester weave offers medium glide with predictable stopping power.'
       },
-      feel: 'Balance / Soft base',
+      
+      performance: {
+        speedRating: 'Control/Medium',
+        speedDescription: 'Balanced with control emphasis',
+        friction: {
+          static: 'Medium-low',
+          dynamic: 'Medium',
+          stopping: 'Good'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'XSOFT', thickness: '4mm', firmness: 'Very Soft', description: 'Micro-adjustments, maximum stopping power, comfortable' },
+        { name: 'SOFT', thickness: '4mm', firmness: 'Moderately Soft', description: 'Most versatile, recommended for most players' },
+        { name: 'FIRM', thickness: '3mm', firmness: 'Firm', description: 'Tracking-heavy gameplay, consistent glide' }
+      ],
+      
+      bestFor: [
+        'Balanced gameplay',
+        'Comfortable extended sessions',
+        'Control-focused play'
+      ],
+      
+      specs: {
+        size: '500 × 400 mm',
+        weight: '~195g',
+        material: '100% Polyester',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (below surface on SOFT/XSOFT, slightly raised on FIRM)'
+      },
+      
       price: 30,
-      size: '500 × 400 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Low stitch',
-      baseDensity: 'Soft foam',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/saturn-old.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Upload the surface close-up here.', src: 'assets/saturn-old.jpg' },
-        { label: 'Base & edge', caption: 'Add the base capture when ready.', src: 'assets/saturn-old.jpg' }
+        { label: 'View 1', src: 'assets/saturn-old.jpg' },
+        { label: 'View 2', src: 'assets/saturn-old.jpg' },
+        { label: 'View 3', src: 'assets/saturn-old.jpg' }
       ],
       cta: contacts.discord
     },
     type99: {
       slug: 'type99',
       name: 'Type99',
+      modelCode: 'E5-T99',
       category: 'control',
-      summary: 'Hybrid control pad that locks in with textured resistance.',
-      detail: {
-        blurb: 'Type99 caps the lineup with a thick base and tactile cloth that slows you down precisely when needed.',
-        surface: 'Hybrid knit disrupts momentum quickly without feeling muddy.',
-        base: 'Thick foam puckers slightly for planted control.',
-        edge: 'Heavy-duty stitch stays flat across the thicker profile.'
+      tagline: 'Maximum control and stopping power.',
+      summary: 'Slowest pad with smooth surface and high friction for precise control.',
+      specialNote: 'Texture becomes prominent under pressure',
+      warning: 'Not recommended with arm sleeves',
+      
+      surface: {
+        type: 'Smooth with high stopping power',
+        material: 'Water-absorbing quick-dry fiber with twisted yarn',
+        description: 'Deceptively smooth surface that becomes grippy under pressure. Special water-absorbing fibers combined with twisted yarn create maximum friction for stopping power. Micro-texture becomes more prominent when pressure is applied.'
       },
-      feel: 'Control / Hybrid',
+      
+      performance: {
+        speedRating: 'Control/Low Speed',
+        speedDescription: 'Slowest Artisan pad',
+        friction: {
+          static: 'Medium',
+          dynamic: 'High',
+          stopping: 'Maximum'
+        }
+      },
+      
+      baseOptions: [
+        { name: 'XSOFT', thickness: '4mm', firmness: 'Very Soft', description: 'Micro-adjustments, maximum stopping power, comfortable' },
+        { name: 'SOFT', thickness: '4mm', firmness: 'Moderately Soft', description: 'Most versatile, recommended for most players' },
+        { name: 'MID', thickness: '3mm', firmness: 'Firm', description: 'Tracking-heavy gameplay, consistent glide' }
+      ],
+      
+      bestFor: [
+        'Low-sensitivity tactical FPS',
+        'Maximum control priority',
+        'Humid environments'
+      ],
+      
+      specs: {
+        size: '500 × 420 mm',
+        weight: '~195g',
+        material: '100% Polyester',
+        base: 'Japanese Poron urethane foam',
+        bottom: 'Non-slip suction grip',
+        edges: 'Stitched (below surface on SOFT/XSOFT, slightly raised on MID)'
+      },
+      
       price: 30,
-      size: '500 × 420 mm',
-      thickness: '5 mm',
-      edgeFinish: 'Heavy stitch',
-      baseDensity: 'Thick foam',
-      hardness: 'XSoft / Soft / Mid',
       image: 'assets/type99.jpg',
       gallery: [
-        { label: 'Surface layer', caption: 'Replace with texture macro soon.', src: 'assets/type99.jpg' },
-        { label: 'Base & edge', caption: 'Upload the base detail later.', src: 'assets/type99.jpg' }
+        { label: 'View 1', src: 'assets/type99.jpg' },
+        { label: 'View 2', src: 'assets/type99.jpg' },
+        { label: 'View 3', src: 'assets/type99.jpg' }
       ],
       cta: contacts.discord
     },
     'pom-skates': {
       slug: 'pom-skates',
       name: 'POM Dot Skates',
+      modelCode: 'E5-POM',
       category: 'accessories',
-      summary: 'Premium POM dot skates for ultra-smooth glide and minimal friction.',
-      detail: {
-        blurb: 'POM Dot Skates deliver consistent, low-friction glide across all pad surfaces. Engineered for durability and precision.',
-        surface: 'High-grade POM material provides smooth, consistent glide with minimal break-in period.',
-        base: 'Pre-applied adhesive backing for easy installation and secure attachment.',
-        edge: 'Precision-cut dots ensure even contact and balanced mouse movement.'
+      tagline: 'Low-friction POM dots for cloth pads.',
+      summary: 'Duracon POM dots with multi-curve design for faster glide on cloth.',
+      specialNote: 'Recommended for MID base mousepads',
+      warning: 'Cloth pads ONLY - NOT for glass pads',
+      
+      surface: {
+        type: 'Duracon POM material',
+        material: '8mm dots with multi-curve shape and rounded edges',
+        description: 'Premium Duracon POM (Polyoxymethylene) material with innovative multi-curve design. The rounded edges reduce drag while the curved surface maintains consistent contact with cloth pads. Much faster than standard PTFE skates.'
       },
-      feel: 'Smooth / Low friction',
+      
+      performance: {
+        speedRating: 'Very Low Friction',
+        speedDescription: 'Faster than PTFE',
+        friction: {
+          static: 'Very low',
+          dynamic: 'Very low',
+          stopping: 'Low'
+        }
+      },
+      
+      baseOptions: [
+        { name: '16 Dots', thickness: '0.8mm', firmness: 'Peel & Stick', description: 'Apply 4-8 dots per mouse' }
+      ],
+      
+      specs: {
+        size: '8mm diameter',
+        weight: '~0.03g per dot',
+        material: 'Duracon POM',
+        quantity: '16 dots per pack',
+        application: 'Peel-and-stick adhesive'
+      },
+      
       price: 8,
-      size: 'Universal fit',
-      thickness: '0.6 mm',
-      edgeFinish: 'Precision cut',
-      baseDensity: 'Adhesive backed',
-      hardness: 'POM material',
       image: 'assets/pom-dot-skates.jpg',
       gallery: [
-        { label: 'Product view', caption: 'Premium POM dot skates.', src: 'assets/pom-dot-skates.jpg' },
-        { label: 'Application', caption: 'Easy to apply with adhesive backing.', src: 'assets/pom-dot-skates.jpg' }
+        { label: 'View 1', src: 'assets/pom-dot-skates.jpg' },
+        { label: 'View 2', src: 'assets/pom-dot-skates.jpg' },
+        { label: 'View 3', src: 'assets/pom-dot-skates.jpg' }
       ],
       cta: contacts.discord
     }
@@ -303,6 +562,64 @@ function renderHeroCarousel() {
     `;
     scroll.appendChild(slide);
   });
+  
+  // Initialize auto-scroll after carousel is rendered
+  initCarouselAutoScroll(scroll);
+}
+
+function initCarouselAutoScroll(scrollElement) {
+  if (!scrollElement) return;
+  
+  let scrollDirection = 1; // 1 for right, -1 for left
+  let scrollSpeed = 0.5; // pixels per frame
+  let isPaused = false;
+  let animationFrameId = null;
+  
+  function autoScroll() {
+    if (!isPaused) {
+      scrollElement.scrollLeft += scrollSpeed * scrollDirection;
+      
+      // Reverse direction at boundaries
+      const maxScroll = scrollElement.scrollWidth - scrollElement.clientWidth;
+      if (scrollElement.scrollLeft >= maxScroll) {
+        scrollDirection = -1;
+      } else if (scrollElement.scrollLeft <= 0) {
+        scrollDirection = 1;
+      }
+    }
+    
+    animationFrameId = requestAnimationFrame(autoScroll);
+  }
+  
+  // Pause on hover
+  scrollElement.addEventListener('mouseenter', () => {
+    isPaused = true;
+  });
+  
+  scrollElement.addEventListener('mouseleave', () => {
+    isPaused = false;
+  });
+  
+  // Pause on touch
+  scrollElement.addEventListener('touchstart', () => {
+    isPaused = true;
+  });
+  
+  scrollElement.addEventListener('touchend', () => {
+    setTimeout(() => {
+      isPaused = false;
+    }, 2000); // Resume after 2 seconds
+  });
+  
+  // Start auto-scroll
+  autoScroll();
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+  });
 }
 
 function renderCategoryGrid() {
@@ -315,10 +632,15 @@ function renderCategoryGrid() {
     card.className = 'category-card reveal';
     card.dataset.category = category.slug;
     card.innerHTML = `
-      <div class="category-pill">${category.name}</div>
-      <h3>${heroProduct?.name || ''}</h3>
-      <p>${category.description}</p>
-      <img src="${basePath}${heroProduct?.image || ''}" alt="${heroProduct?.name || ''} pad" loading="lazy" />
+      <div class="category-info">
+        <h3>${category.name}</h3>
+        <p>${category.description}</p>
+      </div>
+      <div class="category-leader">
+        <p class="leader-label">Recommendation</p>
+        <img src="${basePath}${heroProduct?.image || ''}" alt="${heroProduct?.name || ''} pad" loading="lazy" />
+        <p class="leader-name">${heroProduct?.name || ''}</p>
+      </div>
     `;
     
     // Make entire card clickable to filter by category
@@ -333,8 +655,8 @@ function renderCategoryGrid() {
         // Add active class to target button
         targetButton.classList.add('active');
         // Trigger filter
-        const lineupGrid = document.getElementById('lineup-grid');
-        const products = lineupGrid?.querySelectorAll('.product-card');
+        const galleryGrid = document.getElementById('gallery-grid');
+        const products = galleryGrid?.querySelectorAll('.product-card');
         
         products?.forEach(productCard => {
           const productCategory = productCard.dataset.category || '';
@@ -359,8 +681,8 @@ function renderCategoryGrid() {
   });
 }
 
-function renderLineupGrid() {
-  const grid = document.getElementById('lineup-grid');
+function renderGalleryGrid() {
+  const grid = document.getElementById('gallery-grid');
   if (!grid) return;
   grid.innerHTML = '';
   catalog.lineup.forEach((slug) => {
@@ -372,17 +694,23 @@ function renderLineupGrid() {
     card.dataset.category = product.category;
     card.innerHTML = `
       <img src="${basePath}${product.image}" alt="${product.name} pad" loading="lazy" />
-      <div>
+      <div class="product-info">
         <p class="eyebrow">${category?.indicator || ''}</p>
         <h3>${product.name}</h3>
-        <p>${product.summary}</p>
+        <p class="product-summary">${product.summary}</p>
       </div>
       <div class="product-meta">
         <span>${product.feel}</span>
         <span class="price">${priceFormatter.format(product.price)}</span>
       </div>
-      <a class="buy-btn" href="${basePath}products/${product.slug}.html">Details</a>
     `;
+    
+    // Make entire card clickable
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      window.location.href = `${basePath}products/${product.slug}.html`;
+    });
+    
     grid.appendChild(card);
   });
 }
@@ -391,91 +719,126 @@ function renderProductPage(slug) {
   const product = catalog.products[slug];
   if (!product) return;
   const category = catalog.categories.find((cat) => cat.slug === product.category);
+  
+  // HERO SECTION
   const heroEl = document.getElementById('product-hero');
   if (heroEl) {
     heroEl.innerHTML = `
       <div class="product-hero-inner reveal">
         <div class="hero-copy">
-          <p class="eyebrow">${category?.indicator || ''}</p>
+          ${product.isPopular ? `<div class="popular-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Popular Choice</div>` : ''}
+          <p class="eyebrow">${product.modelCode || category?.indicator || ''}</p>
           <h1>${product.name}</h1>
-          <p>${product.detail.blurb}</p>
+          <p class="tagline">${product.tagline}</p>
+          <p class="product-description">${product.summary}</p>
           <div class="hero-ctas">
             <span class="price product-page-price">${priceFormatter.format(product.price)}</span>
-            <a class="btn primary" href="${product.cta}" target="_blank" rel="noreferrer">Contact</a>
-            <a class="btn ghost btn-back" href="${basePath}index.html#lineup">Back</a>
+            <a class="btn primary" href="${product.cta}" target="_blank" rel="noreferrer">Order on Discord</a>
+            <a class="btn ghost btn-back" href="${basePath}index.html#gallery">← Back to Gallery</a>
           </div>
         </div>
         <div class="hero-media">
-          <img src="${basePath}${product.image}" alt="${product.name} pad" />
+          <img src="${basePath}${product.image}" alt="${product.name}" />
         </div>
       </div>
     `;
   }
 
+  // SURFACE & SPEED SECTION
   const summaryEl = document.getElementById('product-summary');
-  if (summaryEl) {
+  if (summaryEl && product.performance) {
+    const frictionLevel = {
+      'Extremely low': 95,
+      'Very low': 85,
+      'Low': 70,
+      'Medium-low': 60,
+      'Medium': 50,
+      'Medium-high': 40,
+      'High': 25
+    };
+    
     summaryEl.innerHTML = `
-      <div class="summary-grid">
-        <article class="summary-card">
-          <h3>Surface</h3>
-          <p>${product.detail.surface}</p>
-        </article>
-        <article class="summary-card">
-          <h3>Base</h3>
-          <p>${product.detail.base}</p>
-        </article>
-        <article class="summary-card">
-          <h3>Edges</h3>
-          <p>${product.detail.edge}</p>
-        </article>
+      <div class="compact-grid">
+        <div class="compact-section">
+          <h2>Surface</h2>
+          <p class="surface-type">${product.surface?.type || 'Premium cloth'}</p>
+          <p class="surface-material">${product.surface?.material || ''}</p>
+          <p class="surface-desc">${product.surface?.description || ''}</p>
+        </div>
+        
+        <div class="compact-section">
+          <h2>Speed</h2>
+          <p class="speed-rating">${product.performance.speedRating}</p>
+          <div class="friction-bars-compact">
+            <div class="friction-row">
+              <dt>Static</dt>
+              <div class="friction-bar"><div class="friction-fill" style="width: ${frictionLevel[product.performance.friction.static] || 50}%"></div></div>
+            </div>
+            <div class="friction-row">
+              <dt>Dynamic</dt>
+              <div class="friction-bar"><div class="friction-fill" style="width: ${frictionLevel[product.performance.friction.dynamic] || 50}%"></div></div>
+            </div>
+            <div class="friction-row">
+              <dt>Stopping</dt>
+              <div class="friction-bar"><div class="friction-fill" style="width: ${frictionLevel[product.performance.friction.stopping] || 50}%"></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     `;
   }
 
+  // BASE SECTION
   const specsEl = document.getElementById('product-specs');
-  if (specsEl) {
-    const specs = [
-      { label: 'Feel', value: product.feel },
-      { label: 'Thickness', value: product.thickness },
-      { label: 'Size', value: product.size },
-      { label: 'Edge finish', value: product.edgeFinish },
-      { label: 'Base density', value: product.baseDensity },
-      { label: 'Hardness options', value: product.hardness }
-    ];
+  if (specsEl && product.baseOptions) {
     specsEl.innerHTML = `
-      <h3>Specs</h3>
-      <dl class="spec-list">
-        ${specs
-          .map(
-            (spec) => `
-              <div>
-                <dt>${spec.label}</dt>
-                <dd>${spec.value}</dd>
-              </div>
-            `
-          )
-          .join('')}
-      </dl>
+      <h2>Base</h2>
+      <div class="base-options-compact">
+        ${product.baseOptions.map(base => `
+          <div class="base-option-compact ${base.recommended ? 'recommended' : ''}">
+            ${base.recommended ? '<span class="rec-badge">REC</span>' : ''}
+            <h4>${base.name}</h4>
+            <p>${base.thickness} • ${base.firmness}</p>
+          </div>
+        `).join('')}
+      </div>
     `;
   }
-
+  
+  // GALLERY SECTION
   const galleryEl = document.getElementById('product-gallery');
   if (galleryEl) {
-    galleryEl.innerHTML = `
-      <div class="gallery-grid">
-        ${product.gallery
-          .map(
-            (item) => `
-              <figure class="gallery-item reveal">
-                <img src="${basePath}${item.src}" alt="${product.name} ${item.label.toLowerCase()}" />
-                <figcaption>${item.label} — ${item.caption}</figcaption>
-              </figure>
-            `
-          )
-          .join('')}
-      </div>
-      <p class="gallery-note">Need to update the imagery? Replace the files in /assets/ and adjust catalog data.</p>
-    `;
+    // Check if product has gallery images
+    if (product.gallery && product.gallery.length > 0) {
+      galleryEl.innerHTML = `
+        <div class="gallery-grid-compact">
+          ${product.gallery.map(item => `
+            <figure class="gallery-item-compact">
+              <img src="${basePath}${item.src}" alt="${product.name} ${item.label}" loading="lazy" />
+              <figcaption>${item.label}</figcaption>
+            </figure>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      // Show instructions if no gallery images yet
+      galleryEl.innerHTML = `
+        <div class="gallery-instructions">
+          <p>📸 <strong>Add product images:</strong></p>
+          <ol>
+            <li>Place your product images in the <code>assets/</code> folder</li>
+            <li>Update the <code>gallery</code> array in <code>scripts/main.js</code> for this product</li>
+            <li>Example format:
+              <pre>gallery: [
+  { label: 'Top view', src: 'assets/${product.slug}-top.jpg' },
+  { label: 'Surface texture', src: 'assets/${product.slug}-texture.jpg' },
+  { label: 'Edge detail', src: 'assets/${product.slug}-edge.jpg' }
+]</pre>
+            </li>
+          </ol>
+        </div>
+      `;
+    }
   }
 }
 
@@ -515,26 +878,78 @@ function initReveal() {
   revealElements().forEach((el) => observer.observe(el));
 }
 
+// Interactive base selector
+function initBaseSelector() {
+  const baseCards = document.querySelectorAll('.base-option-compact');
+  if (!baseCards.length) return;
+  
+  baseCards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Remove selected class from all cards
+      baseCards.forEach(c => c.classList.remove('selected'));
+      // Add selected class to clicked card
+      card.classList.add('selected');
+    });
+  });
+  
+  // Pre-select recommended option
+  const recommendedCard = document.querySelector('.base-option-compact.recommended');
+  if (recommendedCard) {
+    recommendedCard.classList.add('selected');
+  }
+}
+
+// Animate friction bars on load
+function animateFrictionBars() {
+  const frictionFills = document.querySelectorAll('.friction-fill');
+  if (!frictionFills.length) return;
+  
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+  
+  // Reset widths to 0
+  frictionFills.forEach(fill => {
+    const targetWidth = fill.style.width;
+    fill.dataset.targetWidth = targetWidth;
+    fill.style.width = '0%';
+  });
+  
+  // Animate to target widths with stagger
+  setTimeout(() => {
+    frictionFills.forEach((fill, index) => {
+      setTimeout(() => {
+        fill.style.width = fill.dataset.targetWidth;
+      }, index * 150);
+    });
+  }, 300);
+}
+
 function initPage() {
   if (pageType === 'home') {
     renderHeroCarousel();
     renderCategoryGrid();
-    renderLineupGrid();
+    renderGalleryGrid();
   } else if (pageType === 'product') {
     renderProductPage(body.dataset.product);
+    // Initialize product page interactivity after rendering
+    setTimeout(() => {
+      initBaseSelector();
+      animateFrictionBars();
+    }, 100);
   }
 }
 
 // Product filtering with category buttons
 function initProductFilters() {
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const lineupGrid = document.getElementById('lineup-grid');
+  const galleryGrid = document.getElementById('gallery-grid');
   const noResults = document.getElementById('no-results');
 
-  if (!filterButtons.length || !lineupGrid) return;
+  if (!filterButtons.length || !galleryGrid) return;
 
   function filterProducts(category) {
-    const products = lineupGrid.querySelectorAll('.product-card');
+    const products = galleryGrid.querySelectorAll('.product-card');
     let visibleCount = 0;
 
     products.forEach((card) => {
@@ -614,8 +1029,8 @@ if (explorePadsBtn) {
       // Add active class to target button
       targetButton.classList.add('active');
       // Trigger filter
-      const lineupGrid = document.getElementById('lineup-grid');
-      const products = lineupGrid?.querySelectorAll('.product-card');
+      const galleryGrid = document.getElementById('gallery-grid');
+      const products = galleryGrid?.querySelectorAll('.product-card');
       
       products?.forEach(productCard => {
         productCard.style.display = '';
